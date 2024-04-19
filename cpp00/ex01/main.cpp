@@ -35,6 +35,21 @@ int main()
                 phonebook.contacts[phonebook.contact_count] = new_contact;
                 phonebook.contact_count++;
             }
+            else
+            {
+                Contact new_contact;
+                std::cout << "Enter first name: ";
+                std::cin >> new_contact.first_name;
+                std::cout << "Enter last name: ";
+                std::cin >> new_contact.last_name;
+                std::cout << "Enter nickname: ";
+                std::cin >> new_contact.nickname;
+                std::cout << "Enter phone number: ";
+                std::cin >> new_contact.phone_number;
+                std::cout << "Enter dark secret: ";
+                std::cin >> new_contact.darksecret;
+                phonebook.contacts[phonebook.contact_count % 8] = new_contact;
+            }
         }
         else if (command == "SEARCH")
         {
