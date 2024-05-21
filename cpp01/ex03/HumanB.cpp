@@ -17,3 +17,8 @@ void HumanB::attack()
         std::cout << this->name << " attacks unarmed!" << std::endl;
     }
 }
+
+HumanB::~HumanB()
+{
+    return;
+}
