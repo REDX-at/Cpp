@@ -7,27 +7,27 @@ int Fixed::getRawBits( void ) const
 
 Fixed::~Fixed()
 {
-    std::cout << "Destructor called" << std::endl;
+    // std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed() : storage(0)
 {
-    std::cout << "Default constructor called" << std::endl;
+    // std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &f) : storage(f.storage)
 {
-    std::cout << "Copy constructor called" << std::endl;
+    // std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int i) : storage(i << bits)
 {
-    std::cout << "Int constructor called" << std::endl;
+    // std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed &Fixed::operator=(const Fixed &f)
 {
-    std::cout << "copy Assignation operator called" << std::endl;
+    // std::cout << "copy Assignation operator called" << std::endl;
     storage = f.storage;
     return *this;
 }
@@ -50,7 +50,7 @@ std::ostream& operator<<(std::ostream& os, const Fixed& obj)
 
 Fixed::Fixed(const float f) : storage(roundf(f * (1 << bits)))
 {
-    std::cout << "Float constructor called" << std::endl;
+    // std::cout << "Float constructor called" << std::endl;
 }
 
 // Operator functions
