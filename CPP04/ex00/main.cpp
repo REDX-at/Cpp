@@ -1,24 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/24 16:21:56 by aitaouss          #+#    #+#             */
+/*   Updated: 2024/07/25 10:08:12 by aitaouss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
 int main()
 {
-    std::cout << "--------------------------------" << std::endl;
+    // Test From Pdf
+    const Animal* meta = new Animal();
     const Animal* j = new Dog();
-    std::cout << "--------------------------------" << std::endl;
     const Animal* i = new Cat();
-
-    std::cout << "--------------------------------" << std::endl;
-    std::cout << i->getType() << " " << std::endl;
-    std::cout << "--------------------------------" << std::endl;
-    i->makeSound();
-    std::cout << "--------------------------------" << std::endl;
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << "--------------------------------" << std::endl;
+    std::cout << "Type : " << j->getType() << " " << std::endl;
+    std::cout << "Type : " << i->getType() << " " << std::endl;
     j->makeSound();
-    std::cout << "--------------------------------" << std::endl;
+    i->makeSound();
+    meta->makeSound();
+    delete meta;
     delete j;
-    std::cout << "--------------------------------" << std::endl;
     delete i;
-    std::cout << "--------------------------------" << std::endl;
+    std::cout << std::endl;
+    std::cout << "---------------------" << std::endl << std::endl;
+    // wrong animal
+    const WrongAnimal* wrongmeta = new WrongAnimal();
+    const WrongAnimal* wrongj = new WrongCat();
+
+    std::cout << "Type : " << wrongj->getType() << " " << std::endl;
+    wrongj->makeSound();
+    wrongmeta->makeSound();
+    delete wrongmeta;
+    delete wrongj;
     return 0;
 }

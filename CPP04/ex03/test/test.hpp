@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   test.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/24 16:17:07 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/07/27 11:55:21 by aitaouss         ###   ########.fr       */
+/*   Created: 2024/09/04 19:05:01 by aitaouss          #+#    #+#             */
+/*   Updated: 2024/09/04 19:13:36 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#pragma once
 
 #include <iostream>
-class Animal
+#include <string.h>
+class   body
 {
-    protected:
-        std::string type;
     public:
-        Animal();
-        Animal(std::string type);
-        Animal(const Animal &animal);
-        virtual ~Animal();
-        Animal &operator=(const Animal &animal);
-        virtual void makeSound() const;
-        std::string getType() const;
+        virtual void    whatimi();
 };
 
-#endif
+class   hand : public body
+{
+    public:
+        void    whatimi();
+};
+
+class   foot : public body
+{
+    public:
+        void    whatimi();
+};

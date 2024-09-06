@@ -1,24 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/26 15:11:22 by aitaouss          #+#    #+#             */
+/*   Updated: 2024/07/27 11:54:12 by aitaouss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+#include "Brain.hpp"
 
-int main() {
-    const int numAnimals = 6;
+int main()
+{
+    const Animal* j = new Dog();
+    const Animal* i = new Cat();
 
-    Animal* animals[numAnimals];
-
-    for (int i = 0; i < numAnimals / 2; ++i)
-    {
-        animals[i] = new Dog();
-    }
-
-    for (int i = numAnimals / 2; i < numAnimals; ++i)
-    {
-        animals[i] = new Cat();
-    }
-
-    for (int i = 0; i < numAnimals; ++i)
-    {
-        delete animals[i];
-    }
-
+    i->makeSound();
+    j->makeSound();
+    delete j;
+    delete i;
     return 0;
 }

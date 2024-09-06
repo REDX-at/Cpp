@@ -1,57 +1,52 @@
-#include "Animal.hpp"
-#include "Brain.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/24 16:20:03 by aitaouss          #+#    #+#             */
+/*   Updated: 2024/07/27 11:47:37 by aitaouss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-Animal::Animal()
+#include "Animal.hpp"
+
+Animal::Animal() : type("Animal")
 {
-    type = "Animal";
-    std::cout << "Animal constructor called" << std::endl;
+    std::cout << "Animal Default constructor Called" << std::endl;
 }
 
-Animal::~Animal()
+Animal::Animal(std::string type)
 {
-    std::cout << "Animal destructor called" << std::endl;
+    std::cout << "Animal Parametric constructor Called" << std::endl;
+    this->type = type;
+}
+
+Animal::Animal(const Animal &animal)
+{
+    std::cout << "Copy constructor Called" << std::endl;
+    *this = animal;
+}
+
+Animal &Animal::operator=(const Animal &animal)
+{
+    std::cout << "Assignation operator Called" << std::endl;
+    this->type = animal.type;
+    return *this;
 }
 
 std::string Animal::getType() const
 {
-    return type;
+    return this->type;
 }
 
 void Animal::makeSound() const
 {
-    std::cout << "Animal sound" << std::endl;
+    std::cout << "Animal Sound" << std::endl;
 }
 
-Dog::Dog()
+Animal::~Animal()
 {
-    type = "Dog";
-    std::cout << "Dog constructor called" << std::endl;
-}
-
-Dog::~Dog()
-{
-    delete brain;
-    std::cout << "Dog destructor called" << std::endl;
-}
-
-void Dog::makeSound() const
-{
-    std::cout << "3aw 3aw" << std::endl;
-}
-
-Cat::Cat()
-{
-    type = "Cat";
-    std::cout << "Cat constructor called" << std::endl;
-}
-
-Cat::~Cat()
-{
-    delete brain;
-    std::cout << "Cat destructor called" << std::endl;
-}
-
-void Cat::makeSound() const
-{
-    std::cout << "Meow Meow" << std::endl;
+    std::cout << "Animal Destructor Called" << std::endl;
 }
