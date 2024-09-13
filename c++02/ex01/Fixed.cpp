@@ -26,6 +26,11 @@ Fixed::Fixed(const int i) : storage(i << bits)
     std::cout << "Int constructor called" << std::endl;
 }
 
+Fixed::Fixed(const float f) : storage(roundf(f * (1 << bits)))
+{
+    std::cout << "Float constructor called" << std::endl;
+}
+
 Fixed &Fixed::operator=(const Fixed &f)
 {
     std::cout << "copy Assignation operator called" << std::endl;
@@ -47,9 +52,4 @@ std::ostream& operator<<(std::ostream& os, const Fixed& obj)
 {
     os << obj.toFloat();
     return os;
-}
-
-Fixed::Fixed(const float f) : storage(roundf(f * (1 << bits)))
-{
-    std::cout << "Float constructor called" << std::endl;
 }

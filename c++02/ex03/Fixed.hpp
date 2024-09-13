@@ -8,9 +8,9 @@
 class Fixed
 {
     private:
-        int storage;
         static const int bits = 8;
     public:
+        int storage;
         Fixed();
         Fixed(const Fixed &f);
         Fixed(const int i);
@@ -19,7 +19,6 @@ class Fixed
         int toInt( void ) const; 
         Fixed &operator=(const Fixed &f);
         int getRawBits( void ) const;
-        friend std::ostream& operator<<(std::ostream& os, const Fixed& obj);
         ~Fixed();
 
         bool operator>(const Fixed& other) const;
@@ -45,5 +44,7 @@ class Fixed
         static const Fixed &min(Fixed const &a, Fixed const &b);
 
 };
+
+std::ostream& operator<<(std::ostream& os, const Fixed& obj);
 
 #endif

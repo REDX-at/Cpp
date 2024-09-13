@@ -6,6 +6,11 @@ int Fixed::getRawBits( void ) const
     return storage;
 }
 
+void    Fixed::setRawBits(int const raw)
+{
+    std::cout << "Set raw bits function Called" << std::endl;
+    storage = raw;
+}
 Fixed::~Fixed()
 {
     std::cout << "Destructor called" << std::endl;

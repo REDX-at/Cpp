@@ -2,15 +2,20 @@ SRC = main.cpp Fixed.cpp
 OBJ = $(SRC:.cpp=.o)
 CC = c++
 RM = rm -f
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+HEADERS = Fixed.hpp
+CPPFLAGS = -Wall -Wextra -std=c++98
 
 NAME = Fixed
 
-all: $(NAME) clean
+all: $(NAME)
  
 $(NAME): $(OBJ)
 	@echo "\033[92m√\033[0m \033[97m" $<
 	@$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+
+%.o: %.cpp $(HEADERS)
+	@$(CC) $(CPPFLAGS) -c $< -o $@
+	@echo "\033[92m√\033[0m \033[97m" $<
 
 clean:
 	$(RM) $(OBJ)

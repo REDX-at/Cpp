@@ -7,27 +7,27 @@ int Fixed::getRawBits( void ) const
 
 Fixed::~Fixed()
 {
-    std::cout << "Destructor called" << std::endl;
+    //std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed() : storage(0)
 {
-    std::cout << "Default constructor called" << std::endl;
+    //std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &f) : storage(f.storage)
 {
-    std::cout << "Copy constructor called" << std::endl;
+    //std::cout << "Copy constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int i) : storage(i << bits)
 {
-    std::cout << "Int constructor called" << std::endl;
+    //std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed &Fixed::operator=(const Fixed &f)
 {
-    std::cout << "copy Assignation operator called" << std::endl;
+    //std::cout << "copy Assignation operator called" << std::endl;
     storage = f.storage;
     return *this;
 }
@@ -50,7 +50,7 @@ std::ostream& operator<<(std::ostream& os, const Fixed& obj)
 
 Fixed::Fixed(const float f) : storage(roundf(f * (1 << bits)))
 {
-    std::cout << "Float constructor called" << std::endl;
+    //std::cout << "Float constructor called" << std::endl;
 }
 
 // Operator functions
@@ -142,6 +142,7 @@ Fixed &Fixed::min(Fixed &a, Fixed &b)
 
 Fixed &Fixed::max(Fixed &a, Fixed &b)
 {
+    // std::cout << "max called" << std::endl;
     if (a > b)
         return a;
     return b;
@@ -149,6 +150,7 @@ Fixed &Fixed::max(Fixed &a, Fixed &b)
 
 const Fixed &Fixed::max(Fixed const &a, Fixed const &b)
 {
+    // std::cout << "max const called" << std::endl;
     if (a > b)
         return a;
     return b;
