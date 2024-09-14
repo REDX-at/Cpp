@@ -6,13 +6,13 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 08:45:19 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/09/12 18:14:20 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/09/14 21:01:46 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog() : Animal("Dog"), brain(nullptr)
+Dog::Dog() : Animal("Dog"), brain(NULL)
 {
     // std::cout << "Dog Default constructor called" << std::endl;
     this->brain = new Brain();

@@ -6,13 +6,13 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 08:51:08 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/09/12 18:21:09 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/09/14 21:01:34 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-Cat::Cat() : Animal("Cat"), brain(nullptr)
+Cat::Cat() : Animal("Cat"), brain(NULL)
 {
     std::cout << "Cat Default constructor called" << std::endl;
     this->brain = new Brain();

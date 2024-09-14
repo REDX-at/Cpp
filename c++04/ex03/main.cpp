@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:37:18 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/09/13 10:52:37 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/09/14 21:06:24 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,6 @@
 //     return 0;
 // }
 
-void    f()
-{
-    system("leaks programe");
-}
 
 int main()
 {
@@ -88,7 +84,6 @@ int main()
     int j = 0;
     for (int i = 0; i < 4; i++)
         invetory_tmp[i] = NULL;
-    atexit(f);
     Character* me = new Character("me");
     ICharacter* bob = new Character("bob");
     

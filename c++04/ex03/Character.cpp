@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:22:31 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/09/13 10:21:01 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/09/14 21:02:25 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ void    Character::use(int idx, ICharacter& target)
 {
     if (idx < 0 || idx >= 4)
         return;
-
     if (inventory[idx])
         inventory[idx]->use(target);
 }
