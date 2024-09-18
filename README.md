@@ -28,6 +28,6 @@ Practical Exercises: Test your knowledge with coding challenges and exercises th
 Project-based Learning: Build small projects that help solidify the theory you've learned.
 Detailed Logs and Output: Access logs and output to analyze and debug your code effectively.
 Contact
-For any questions, feedback, or support, please contact me at your.email@example.com or visit my GitHub profile at GitHub.
+For any questions, feedback, or support, please contact me at taoussi.aimen@gmail.com or visit my GitHub profile at GitHub.
 
 
