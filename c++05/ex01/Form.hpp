@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 22:01:31 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/09/20 22:45:47 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/09/22 07:13:53 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class Form
         const std::string& getName() const;
         int getGradeToSign() const;
         int getGradeToExecute() const;
+        bool getSign() const;
         void    beSigned(const Bureaucrat& b);
         void    signForm();
         // class GradeTooHighException : public std::exception
@@ -42,4 +43,4 @@ class Form
         };
 };
 
-// std::ostream& operator<<(std::ostream& os, const Form& b);
+std::ostream& operator<<(std::ostream& os, const Form& b);
