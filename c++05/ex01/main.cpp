@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 22:01:28 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/09/22 07:22:11 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/09/22 07:23:32 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ int main()
 
         std::cout << a << std::endl;
 
+        a.signForm();
         a.beSigned(bform);
+        a.signForm();
         std::cout << a << std::endl;
     }
     catch (std::exception &t)
