@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 22:01:28 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/09/22 07:23:32 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/09/22 07:44:59 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main()
     }
     try
     {
-        Bureaucrat bform("Form", 1);
+        Bureaucrat bform("redx", 1);
         Form a;
 
         std::cout << a << std::endl;
@@ -37,7 +37,7 @@ int main()
     }
     catch (std::exception &t)
     {
-        std::cout << "From the Bureaucrat catch Form\n";
+        std::cout << "From the Bureaucrat catch redx\n";
         std::cout << t.what() << std::endl ;
     }
     
