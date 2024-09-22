@@ -1,9 +1,9 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = AForm
-SRCS = main.cpp AForm.cpp Bureaucrat.cpp ShrubberyCreationForm.cpp
+SRCS = main.cpp AForm.cpp Bureaucrat.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp
 OBJS = $(SRCS:.cpp=.o)
-HEADERS = Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp
+HEADERS = Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp
 all: $(NAME)
 
 $(NAME): $(OBJS)

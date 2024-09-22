@@ -6,64 +6,51 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 07:57:04 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/09/22 08:39:36 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/09/22 22:52:55 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : target(""), name("Shrubbery"), gradeToSign(145), gradeToExecute(137)
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery", 145, 137), target("")
 {
-    std::cout << "default contructor ShrubberyCreationForm called\n";
+    std::cout << "Default constructor ShrubberyCreationForm called\n";
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : target(target), name("Shrubbery"), gradeToSign(145), gradeToExecute(137)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm("Shrubbery", 145, 137), target(target)
 {
-    std::cout << "parametric contructor ShrubberyCreationForm called\n";
+    std::cout << "Parametric constructor ShrubberyCreationForm called\n";
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-    std::cout << "destructor contructor ShrubberyCreationForm called\n";
+    std::cout << "Destructor ShrubberyCreationForm called\n";
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : gradeToSign(other.gradeToSign), gradeToExecute(other.gradeToExecute)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other), target(other.target)
 {
-    
+    std::cout << "Copy constructor ShrubberyCreationForm called\n";
 }
 
-const std::string & ShrubberyCreationForm::getName() const
-{
-    return this->name;
-}
-
-int ShrubberyCreationForm::getGradeToSign() const
-{
-    return this->gradeToSign;
-}
-
-int ShrubberyCreationForm::getGradeToExecute() const
-{
-    return this->gradeToExecute;
-}
-
-std::ostream& operator<<(std::ostream& os, const ShrubberyCreationForm& b)
-{
-    os << std::endl;
-    os << "to execute : " << b.getGradeToExecute() << std::endl;
-    os << "to sign : " << b.getGradeToSign() << std::endl;
-    os << "name : " << b.getName() << std::endl;
-    os << "target : " << b.getTarget() << std::endl;
-    os << std::endl;
-    return os;
-}
-
-const std::string & ShrubberyCreationForm::getTarget() const
+const std::string& ShrubberyCreationForm::getTarget() const
 {
     return this->target;
 }
 
-void    ShrubberyCreationForm::createShrubberyFile() const
+void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
+{
+    if (!this->getSign())
+    {
+        throw AForm::NotSignedException();
+    }
+    if (executor.getGrade() > this->getGradeToExecute())
+    {
+        throw AForm::GradeTooLowException();
+    }
+    this->createShrubberyFile();
+}
+
+void ShrubberyCreationForm::createShrubberyFile() const
 {
     if (this->target.empty())
     {
@@ -73,7 +60,6 @@ void    ShrubberyCreationForm::createShrubberyFile() const
     std::string filename = this->target + "_shrubbery";
     std::ofstream file(filename);
 
-    std::cout << "Im in the create\n";
     if (file.is_open())
     {
         file << "      ^\n";
