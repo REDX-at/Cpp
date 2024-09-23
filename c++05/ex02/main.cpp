@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 07:52:52 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/09/23 01:18:01 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/09/23 01:52:11 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,14 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
+void    f()
+{
+    system("leaks AForm");
+}
+
 int main()
 {
+    atexit(f);
     // // ShrubberyCreationForm tests
     // ShrubberyCreationForm d;
     // ShrubberyCreationForm a("test");
@@ -87,6 +93,7 @@ int main()
         AForm   *b = new RobotomyRequestForm;
         b->beSigned(a);
         a.executeForm(*b);
+        delete b;
     }
     catch (std::exception &e)
     {
