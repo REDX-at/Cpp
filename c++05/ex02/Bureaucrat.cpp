@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 17:53:35 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/09/20 21:53:45 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/09/23 01:14:45 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,18 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& b)
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : name(other.name), grade(other.grade)
 {
     std::cout << "Copy constructor called\n";
+}
+
+
+void    Bureaucrat::executeForm(AForm const & form)
+{
+    try
+    {
+        form.execute(*this);
+        std::cout << this->name << " executed " << form.getName() << std::endl;
+    }
+    catch (std::exception &e)
+    {
+        std::cout << "error : "<< e.what() << std::endl;
+    }
 }

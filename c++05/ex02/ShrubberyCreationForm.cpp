@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 07:57:04 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/09/22 22:52:55 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/09/23 01:01:52 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
     {
         throw AForm::GradeTooLowException();
     }
+    this->performeAction();
+}
+
+void    ShrubberyCreationForm::performeAction() const
+{
     this->createShrubberyFile();
 }
 

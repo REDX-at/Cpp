@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 07:50:04 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/09/22 22:41:03 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/09/23 01:11:41 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <string>
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
 class AForm
 {
     private:
@@ -51,6 +52,7 @@ class AForm
         {
             const char* what() const throw();   
         };
+        virtual void    performeAction() const = 0;
 };
 
 std::ostream& operator<<(std::ostream& os, const AForm& b);

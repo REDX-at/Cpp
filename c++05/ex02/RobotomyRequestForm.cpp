@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 21:52:40 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/09/22 23:36:20 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/09/23 01:16:12 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,9 @@ const std::string& RobotomyRequestForm::getTarget() const
     return this->target;
 }
 
-void RobotomyRequestForm::execute(const Bureaucrat& executor) const
+void    RobotomyRequestForm::performeAction() const
 {
-    if (!this->getSign())
-    {
-        throw AForm::NotSignedException();
-    }
-    if (executor.getGrade() > this->getGradeToExecute())
-    {
-        throw AForm::GradeTooLowException();
-    }
-    
     std::cout << "Drilling noises..." << std::endl;
-
     std::srand(std::time(NULL));
     if (std::rand() % 2)
     {
@@ -59,4 +49,17 @@ void RobotomyRequestForm::execute(const Bureaucrat& executor) const
     {
         std::cout << "Robotomy failed on " << this->target << "!" << std::endl;
     }
+}
+
+void    RobotomyRequestForm::execute(const Bureaucrat& executor) const
+{
+    if (!this->getSign())
+    {
+        throw AForm::NotSignedException();
+    }
+    if (executor.getGrade() > this->getGradeToExecute())
+    {
+        throw AForm::GradeTooLowException();
+    }
+    this->performeAction();
 }

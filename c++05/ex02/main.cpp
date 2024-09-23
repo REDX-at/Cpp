@@ -6,48 +6,90 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 07:52:52 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/09/22 23:45:35 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/09/23 01:18:01 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {
-    // ShrubberyCreationForm tests
-    ShrubberyCreationForm d;
-    ShrubberyCreationForm a("test");
+    // // ShrubberyCreationForm tests
+    // ShrubberyCreationForm d;
+    // ShrubberyCreationForm a("test");
 
-    ShrubberyCreationForm b(a);
+    // ShrubberyCreationForm b(a);
     
-    std::cout << d << std::endl;
-    std::cout << b << std::endl;
-    std::cout << a << std::endl;
+    // std::cout << d << std::endl;
+    // std::cout << b << std::endl;
+    // std::cout << a << std::endl;
+    // try
+    // {
+    //     Bureaucrat t("Bureau", 1);
+    //     a.beSigned(t);
+    //     a.execute(t);
+    // }
+    // catch(const std::exception& e)
+    // {
+    //     std::cerr << e.what() << '\n';
+    // }
+
+    // // RobotomyRequestForm tests
+    // RobotomyRequestForm r("red");
+
+    // std::cout << r << std::endl;
+    // try 
+    // {
+    //     Bureaucrat t("robot", 1);
+    //     r.beSigned(t);
+    //     r.execute(t);
+    // }
+    // catch (std::exception &e)
+    // {
+    //     std::cerr << e.what() << std::endl;
+    // }
+    
+    // PresidentialPardonForm tests
+    // PresidentialPardonForm p("slave");
+    // PresidentialPardonForm o(p);
+    
+    // std::cout << p << std::endl;
+    // std::cout << o << std::endl;
+    
+    // try 
+    // {
+    //     Bureaucrat t("pardone", 1);
+    //     p.beSigned(t);
+    //     p.execute(t);
+    // }
+    // catch (std::exception &e)
+    // {
+    //     std::cerr << e.what() << std::endl;
+    // }
+
+    // polymorphisme
+    // AForm   *a = new PresidentialPardonForm;
+    // a->performeAction();
+    // delete a;
+    // a = new RobotomyRequestForm;
+    // a->performeAction();
+    // delete a;
+    // a = new ShrubberyCreationForm;
+    // a->performeAction();
+
+    // execute form
     try
     {
-        Bureaucrat t("Bureau", 1);
-        a.beSigned(t);
-        a.execute(t);
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-
-    // RobotomyRequestForm tests
-    RobotomyRequestForm r("red");
-
-    std::cout << r << std::endl;
-    try 
-    {
-        Bureaucrat t("robot", 1);
-        r.beSigned(t);
-        r.execute(t);
+        Bureaucrat  a("aimen", 1);
+        AForm   *b = new RobotomyRequestForm;
+        b->beSigned(a);
+        a.executeForm(*b);
     }
     catch (std::exception &e)
     {
-        std::cerr << e.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
 }
