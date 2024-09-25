@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/25 01:38:11 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/09/25 01:41:33 by aitaouss         ###   ########.fr       */
+/*   Created: 2024/09/25 02:46:57 by aitaouss          #+#    #+#             */
+/*   Updated: 2024/09/25 02:47:14 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "ScalarConverter.hpp"
 
-#include <iostream>
-#include <string>
-#include <cctype>
-
-class   ScalarConverter
+int main(int ac, char **av)
 {
-    private:
-        ScalarConverter();  
+    if (ac != 2)
+    {
+        std::cout << "Usage: ./convert [literal]" << std::endl;
+        return 1;
+    }
 
-    public:
-        static void convert(const std::string &literal);
-
-};
+    ScalarConverter::convert(av[1]);
+    return 0;
+}

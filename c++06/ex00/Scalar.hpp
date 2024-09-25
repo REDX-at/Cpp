@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Scalar.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/25 01:38:11 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/09/25 01:41:33 by aitaouss         ###   ########.fr       */
+/*   Created: 2024/09/25 01:50:16 by aitaouss          #+#    #+#             */
+/*   Updated: 2024/09/25 02:28:24 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iostream>
-#include <string>
-#include <cctype>
+#include "ScalarConverter.hpp"
 
-class   ScalarConverter
+#include "cmath"
+#include <limits>
+#include <iomanip>
+
+class   Scalar
 {
-    private:
-        ScalarConverter();  
-
     public:
-        static void convert(const std::string &literal);
-
+        void    execute(const std::string &literal);
+    private:
+        void    printChar(double value);
+        void    printInt(double value);
+        void    printFloat(double value);
+        void    printDouble(double value);
 };
