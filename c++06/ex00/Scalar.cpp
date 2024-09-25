@@ -6,54 +6,125 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 02:08:42 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/09/25 02:51:53 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:39:07 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Scalar.hpp"
 
-bool isNumeric(const std::string& literal)
+int Scalar::isDigit(int c)
 {
-    char* end = NULL;
-    std::strtod(literal.c_str(), &end);
-    return end != literal.c_str() && *end == '\0'; // If 'end' points to the null terminator, it's a valid number
+    return (c >= '0' && c <= '9');
 }
 
-bool isSingleChar(const std::string& literal)
+size_t Scalar::strlength(const std::string &str)
 {
-    return literal.length() == 1 && std::isprint(literal[0]);
+    int i = 0;
+    while (str[i])
+        i++;
+    return i;
+}
+
+bool Scalar::isChar(const std::string& literal)
+{
+    return this->strlength(literal) == 1 && std::isprint(literal[0]) && !this->isDigit(literal[0]);
+}
+
+bool Scalar::isInt(const std::string& literal)
+{
+    if (literal.back() == 'f' || literal.back() == 'F')
+        return false;
+    if (!this->isDigit(literal[0]) && literal[0] != '+' && literal[0] != '-')
+        return false;
+    for (size_t i = 1; i < this->strlength(literal); i++)
+    {
+        if (!this->isDigit(literal[i]))
+            return false;
+    }
+    return true;
+}
+
+bool Scalar::isDouble(const std::string& literal)
+{
+    if (literal.back() == 'f' || literal.back() == 'F')
+        return false;
+    if (!this->isDigit(literal[0]) && literal[0] != '+' && literal[0] != '-')
+        return false;
+    for (size_t i = 1; i < this->strlength(literal); i++)
+    {
+        if (!this->isDigit(literal[i]) && literal[i] != '.')
+            return false;
+    }
+    return true;
+}
+
+bool Scalar::isFloat(const std::string& literal)
+{
+    if (literal.back() != 'f' && literal.back() != 'F')
+        return false;
+    if (!this->isDigit(literal[0]) && literal[0] != '+' && literal[0] != '-')
+        return false;
+    for (size_t i = 1; i < (this->strlength(literal) - 1); i++)
+    {
+        if (!this->isDigit(literal[i]) && literal[i] != '.' && literal[i] != 'f' && literal[i] != 'F')
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+std::string Scalar::check_type(std::string literal)
+{
+    if (literal == "nan" || literal == "nanf")
+    {
+        std::cout << "char: Non displayable" << std::endl;
+        std::cout << "int: Overflow" << std::endl;
+        std::cout << "float: nanf" << std::endl;
+        std::cout << "double: nan" << std::endl;
+        return "NULL";
+    }
+    else if (literal == "-inf" || literal == "-inff")
+    {
+        std::cout << "char: Non displayable" << std::endl;
+        std::cout << "int: Overflow" << std::endl;
+        std::cout << "float: -inff" << std::endl;
+        std::cout << "double: -inf" << std::endl;
+        return "NULL";
+    }
+    else if (literal == "+inf" || literal == "+inff")
+    {
+        std::cout << "char: Non displayable" << std::endl;
+        std::cout << "int: Overflow" << std::endl;
+        std::cout << "float: +inff" << std::endl;
+        std::cout << "double: +inf" << std::endl;
+        return "NULL";
+    }
+    if(isChar(literal))
+        return "char";
+    else if(isInt(literal))
+        return "int";
+    else if(isFloat(literal))
+        return "float";
+    else if(isDouble(literal))
+        return "double";
+    else
+    {
+        std::cout << "Conversion error: Invalid input" << std::endl;
+        return "NULL";
+    }
 }
 
 void    Scalar::execute(const std::string &literal)
 {
-    try
+    if (literal.empty())
     {
-        if (literal == "nan" || literal == "nanf")
-        {
-            std::cout << "char: Non displayable" << std::endl;
-            std::cout << "int: Overflow" << std::endl;
-            std::cout << "float: nanf" << std::endl;
-            std::cout << "double: nan" << std::endl;
-            return;
-        }
-        else if (literal == "-inf" || literal == "-inff")
-        {
-            std::cout << "char: Non displayable" << std::endl;
-            std::cout << "int: Overflow" << std::endl;
-            std::cout << "float: -inff" << std::endl;
-            std::cout << "double: -inf" << std::endl;
-            return;
-        }
-        else if (literal == "+inf" || literal == "+inff")
-        {
-            std::cout << "char: Non displayable" << std::endl;
-            std::cout << "int: Overflow" << std::endl;
-            std::cout << "float: +inff" << std::endl;
-            std::cout << "double: +inf" << std::endl;
-            return;
-        }
-
-        if (isSingleChar(literal))
+        std::cout << "Conversion error: Empty input" << std::endl;
+        return;
+    }
+    if (this->check_type(literal) != "NULL")
+    {
+        if (this->isChar(literal))
         {
             char charValue = literal[0];
             std::cout << "char: '" << charValue << "'" << std::endl;
@@ -62,23 +133,25 @@ void    Scalar::execute(const std::string &literal)
             std::cout << "double: " << static_cast<double>(charValue) << std::endl;
             return;
         }
-        
-        if (!isNumeric(literal))
+        if ( this->isFloat(literal))
         {
-            std::cout << "Conversion error: Invalid numeric input" << std::endl;
-            return;
+            literal.substr(0, this->strlength(literal) - 1);
         }
-    
-        double value = std::stod(literal);
-
+        double value = strtod(literal.c_str(), NULL);
         this->printChar(value);
         this->printInt(value);
         this->printFloat(value);
         this->printDouble(value);
+        return;
     }
-    catch (std::exception &e)
+    if (this->isChar(literal))
     {
-        std::cout << "Conversion error: " << e.what() << std::endl;
+        char charValue = literal[0];
+        std::cout << "char: '" << charValue << "'" << std::endl;
+        std::cout << "int: " << static_cast<int>(charValue) << std::endl;
+        std::cout << "float: " << static_cast<float>(charValue) << "f" << std::endl;
+        std::cout << "double: " << static_cast<double>(charValue) << std::endl;
+        return;
     }
 }
 
@@ -104,7 +177,7 @@ void    Scalar::printChar(double value)
 
 void    Scalar::printInt(double value)
 {
-    if (value < std::numeric_limits<int>::min() || std::numeric_limits<int>::max())
+    if (value < std::numeric_limits<int>::min() || value > std::numeric_limits<int>::max())
     {
         std::cout << "Int: Overflow" << std::endl;
     }
