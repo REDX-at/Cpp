@@ -104,7 +104,7 @@ void    Scalar::printChar(double value)
 
 void    Scalar::printInt(double value)
 {
-    if (value < std::numeric_limits<int>::min() || std::numeric_limits<int>::max())
+    if (value < std::numeric_limits<int>::min() || value >std::numeric_limits<int>::max())
     {
         std::cout << "Int: Overflow" << std::endl;
     }
