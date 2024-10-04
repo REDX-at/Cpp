@@ -1,5 +1,5 @@
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror #-std=c++98
 NAME = Serializer
 SRCS = main.cpp Serializer.cpp data.cpp
 OBJS = $(SRCS:.cpp=.o)

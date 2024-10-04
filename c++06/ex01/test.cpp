@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.hpp                                     :+:      :+:    :+:   */
+/*   test.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 20:25:29 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/10/04 17:03:25 by aitaouss         ###   ########.fr       */
+/*   Created: 2024/10/04 16:20:58 by aitaouss          #+#    #+#             */
+/*   Updated: 2024/10/04 17:01:50 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "data.hpp"
 
-#include <iostream>
-#include <string>
-#include <ctime>
-#include <cstdlib>
-#include <cstdint>
-
-class Data;
-
-class Serializer
+int main()
 {
-    private:
-        Serializer();
-    public:
-        static uintptr_t serialize(Data* ptr);
-        static Data* deserialize(uintptr_t raw);
-};
+    int n = 59;
+
+    int *b = &n;
+
+    std::cout << "Original: " << b << std::endl;
+    uintptr_t raw = reinterpret_cast<uintptr_t>(b);
+    std::cout << "Serialized: " << raw << std::endl;
+    int *c = reinterpret_cast<int*>(raw);
+    std::cout << "Deserialized: " << c << std::endl;
+}
