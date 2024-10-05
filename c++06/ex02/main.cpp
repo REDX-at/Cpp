@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.cpp                                     :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 22:11:43 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/10/05 20:47:30 by aitaouss         ###   ########.fr       */
+/*   Created: 2024/10/05 20:55:28 by aitaouss          #+#    #+#             */
+/*   Updated: 2024/10/05 23:00:48 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Serializer.hpp"
+#include "Base.hpp"
+#include "DerivedA.hpp"
+#include "DerivedB.hpp"
+#include "DerivedC.hpp"
 
-Serializer::Serializer()
+Base* generate(void)
 {
+    std::srand(std::time(0));
+    int b = std::rand() % 3;
+
+    std::cout << b << std::endl;
+
+    return new Base;
 }
 
-uintptr_t Serializer::serialize(Data* ptr)
+int main()
 {
-    return reinterpret_cast<uintptr_t>(ptr);
-}
+    Base *a = new DerivedA();
 
-Data* Serializer::deserialize(uintptr_t raw)
-{
-    return reinterpret_cast<Data*>(raw);
+    generate();
+    delete a;
+    return 0;
 }

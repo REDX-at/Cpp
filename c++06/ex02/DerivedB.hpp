@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.cpp                                     :+:      :+:    :+:   */
+/*   DerivedB.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 22:11:43 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/10/05 20:47:30 by aitaouss         ###   ########.fr       */
+/*   Created: 2024/10/05 20:51:51 by aitaouss          #+#    #+#             */
+/*   Updated: 2024/10/05 20:56:17 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Serializer.hpp"
+#pragma once
 
-Serializer::Serializer()
-{
-}
+#include "Base.hpp"
 
-uintptr_t Serializer::serialize(Data* ptr)
+class DerivedB : public Base
 {
-    return reinterpret_cast<uintptr_t>(ptr);
-}
-
-Data* Serializer::deserialize(uintptr_t raw)
-{
-    return reinterpret_cast<Data*>(raw);
-}
+    public:
+        DerivedB();
+        ~DerivedB();
+};
