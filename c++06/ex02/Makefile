@@ -3,7 +3,7 @@ CXFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = dynamic
 SRCS = main.cpp Base.cpp DerivedA.cpp DerivedB.cpp DerivedC.cpp
 OBJS = $(SRCS:.cpp=.o)
-HEADERS = 
+HEADERS = Base.hpp DerivedA.hpp DerivedB.hpp DerivedC.hpp
 
 all: $(NAME)
 

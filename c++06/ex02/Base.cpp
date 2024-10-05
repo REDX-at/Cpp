@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 20:49:14 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/10/05 20:50:51 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/10/05 23:31:51 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 Base::~Base()
 {
-    std::cout << "Base destructor called";
+    // std::cout << "Base destructor called";
 }
 
