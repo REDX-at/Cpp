@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 20:55:28 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/10/05 23:50:01 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/10/06 00:01:36 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ void    identify(Base* p)
         std::cout << "Derived B" << std::endl;
     else if (dynamic_cast<DerivedC*>(p))
         std::cout << "Derived C" << std::endl;
+    else if (dynamic_cast<Base*>(p))
+        std::cout << "Base" << std::endl;
     else
-        std::cout << "Something went wrong" << std::endl;
+        std::cout << "NULL" << std::endl;
 }
 
 void    identify(Base& p)
@@ -68,7 +70,10 @@ int main()
 {
     Base *a = generate();
 
+    Base *base = new Base();
     Base *b = new DerivedB();
+    identify(base);
+    identify(*base);
     identify(*b);
     identify(a);
     delete a;
