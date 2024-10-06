@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 01:14:17 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/10/06 17:23:15 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/10/06 19:34:03 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <string>
+#include <exception>
 
 template <typename T>
 class Array
@@ -67,6 +68,15 @@ class Array
             }
             return *this;
         }
+        T& operator[](unsigned int index) {
+            if (index >= size){
+                throw std::out_of_range("index out of range");
+            }
+            return array[index];
+        }
+        T   sizee(){
+            return size;
+        }
         void    print_array(T *arr, unsigned int i) {
             for (unsigned int j = 0; j < i; ++j){
                 std::cout << arr[j] << std::endl;
@@ -75,4 +85,6 @@ class Array
         T* getarray() {
             return array;
         }
+
+
 };
