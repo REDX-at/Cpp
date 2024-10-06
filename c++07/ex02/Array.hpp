@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 01:14:17 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/10/06 17:09:52 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/10/06 17:23:15 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,30 +20,30 @@ class Array
 {
     private:
         T* array;
-        unsigned int n;
+        unsigned int size;
     public:
-        Array() : array(NULL), n(0){
+        Array() : array(NULL), size(0) {
         }
-        Array(unsigned int n) : n(n){
-            if (n > 0){
-                array = new T[n];
-                for(unsigned int i = 0; i < n; ++i){
+        Array(unsigned int size) : size(size) {
+            if (size > 0) {
+                array = new T[size];
+                for(unsigned int i = 0; i < size; ++i) {
                     array[i] = T();
                 }
             }
             else
                 array = NULL;
         }
-        unsigned int getn(){
-            return n;
+        unsigned int getsize() {
+            return size;
         }
-        ~Array(){
+        ~Array() {
             delete[] array;
         }
-        Array(const Array &other) : n(other.n){
-            if (n > 0){
-                array = new T[n];
-                for (unsigned int i = 0; i < n; ++i){
+        Array(const Array &other) : size(other.size){
+            if (size > 0) {
+                array = new T[size];
+                for (unsigned int i = 0; i < size; ++i) {
                     array[i] = other.array[i];
                 }
             }
@@ -51,12 +51,28 @@ class Array
                 array = NULL;
             }
         }
-        void    print_array(T *arr, unsigned int i){
+        Array& operator=(const Array& other) {
+            if (this == &other)
+                return *this;
+            delete[] array;
+            size = other.size;
+            if (size > 0) {
+                array = new T[size];
+                for (unsigned int i = 0; i < size; ++i) {
+                    array[i] = other.array[i];
+                }
+            }
+            else {
+                array = NULL;
+            }
+            return *this;
+        }
+        void    print_array(T *arr, unsigned int i) {
             for (unsigned int j = 0; j < i; ++j){
-                std::cout << arr[i] << std::endl;
+                std::cout << arr[j] << std::endl;
             }
         }
-        T* getarray(){
+        T* getarray() {
             return array;
         }
 };
