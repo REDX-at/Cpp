@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 01:50:16 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/09/25 16:39:01 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/09/25 22:59:10 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 class   Scalar
 {
     public:
+        Scalar();
+        ~Scalar();
+        Scalar(const Scalar & src);
+        Scalar & operator=(const Scalar & src);
         void        execute(const std::string &literal);
     private:
         void        printChar(double value);

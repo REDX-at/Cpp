@@ -6,11 +6,31 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 02:08:42 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/09/25 16:40:49 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/09/25 22:59:37 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Scalar.hpp"
+
+// orhtodox canonical form
+
+Scalar::Scalar() {}
+
+Scalar::~Scalar() {}
+
+Scalar::Scalar(const Scalar & src)
+{
+    *this = src;
+}
+
+Scalar & Scalar::operator=(const Scalar & src)
+{
+    if (this != &src)
+    {
+        *this = src;
+    }
+    return *this;
+}
 
 int Scalar::isDigit(int c)
 {
@@ -78,24 +98,24 @@ std::string Scalar::check_type(std::string literal)
 {
     if (literal == "nan" || literal == "nanf")
     {
-        std::cout << "char: Non displayable" << std::endl;
-        std::cout << "int: Overflow" << std::endl;
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: mpossible" << std::endl;
         std::cout << "float: nanf" << std::endl;
         std::cout << "double: nan" << std::endl;
         return "NULL";
     }
     else if (literal == "-inf" || literal == "-inff")
     {
-        std::cout << "char: Non displayable" << std::endl;
-        std::cout << "int: Overflow" << std::endl;
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
         std::cout << "float: -inff" << std::endl;
         std::cout << "double: -inf" << std::endl;
         return "NULL";
     }
     else if (literal == "+inf" || literal == "+inff")
     {
-        std::cout << "char: Non displayable" << std::endl;
-        std::cout << "int: Overflow" << std::endl;
+        std::cout << "impossible" << std::endl;
+        std::cout << "impossible" << std::endl;
         std::cout << "float: +inff" << std::endl;
         std::cout << "double: +inf" << std::endl;
         return "NULL";

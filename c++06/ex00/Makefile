@@ -1,5 +1,5 @@
 CXX = c++
-NAME = ScalarConverter
+NAME = convert
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS = main.cpp ScalarConverter.cpp Scalar.cpp
 OBJS = $(SRCS:.cpp=.o)
