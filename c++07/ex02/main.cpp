@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 01:22:45 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/10/06 19:34:28 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/10/07 11:02:29 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@
 //     Array<int> a(4);
 //     Array<int> b(10);
 
-//     std::cout << "b size = " << b.getsize() << std::endl;
-//     b.print_array(b.getarray(), b.getsize());
+//     std::cout << "b size = " << b.size() << std::endl;
 
 //     b = a;
 
-//     std::cout << "b size = " << b.getsize() << std::endl;
-//     a.print_array(b.getarray(), b.getsize());
+//     std::cout << "b size = " << b.size() << std::endl;
 // }
+
 
 int main()
 {
@@ -40,8 +39,7 @@ int main()
 
         Aimen[1] = 17;
 
-        // Aimen.print_array(Aimen.getarray(), Aimen.getsize());
-        std::cout << Aimen.sizee() << std::endl;
+        std::cout << "size of the array = " << Aimen.size() << std::endl;
     }
 
     catch(std::out_of_range& e){
