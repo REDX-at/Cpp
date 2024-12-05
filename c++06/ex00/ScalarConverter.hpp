@@ -15,6 +15,7 @@
 #include <iostream>
 #include <string>
 #include <cctype>
+#include "Scalar.hpp"
 
 class   ScalarConverter
 {

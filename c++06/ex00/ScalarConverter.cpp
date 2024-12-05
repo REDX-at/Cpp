@@ -29,3 +29,10 @@ ScalarConverter & ScalarConverter::operator=(const ScalarConverter & src)
     }
     return *this;
 }
+
+void    ScalarConverter::convert(const std::string &literal)
+{
+    Scalar  ScalarInstance;
+
+    ScalarInstance.execute(literal);
+}

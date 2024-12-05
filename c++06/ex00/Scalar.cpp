@@ -66,6 +66,8 @@ bool Scalar::isInt(const std::string& literal)
 
 bool Scalar::isDouble(const std::string& literal)
 {
+    if (this->countDot(literal) > 1 || this->countf(literal) > 1)
+        return false;
     if (literal.back() == 'f' || literal.back() == 'F')
         return false;
     if (!this->isDigit(literal[0]) && literal[0] != '+' && literal[0] != '-')
@@ -78,8 +80,11 @@ bool Scalar::isDouble(const std::string& literal)
     return true;
 }
 
+
 bool Scalar::isFloat(const std::string& literal)
 {
+    if (this->countDot(literal) > 1 || this->countf(literal) > 1)
+        return false;
     if (literal.back() != 'f' && literal.back() != 'F')
         return false;
     if (!this->isDigit(literal[0]) && literal[0] != '+' && literal[0] != '-')
@@ -92,6 +97,28 @@ bool Scalar::isFloat(const std::string& literal)
         }
     }
     return true;
+}
+// count utils
+int Scalar::countDot(const std::string &literal)
+{
+    int count = 0;
+    for (size_t i = 0; i < this->strlength(literal); i++)
+    {
+        if (literal[i] == '.')
+            count++;
+    }
+    return count;
+}
+
+int Scalar::countf(const std::string &literal)
+{
+    int count = 0;
+    for (size_t i = 0; i < this->strlength(literal); i++)
+    {
+        if (literal[i] == 'f' || literal[i] == 'F')
+            count++;
+    }
+    return count;
 }
 
 std::string Scalar::check_type(std::string literal)
@@ -164,15 +191,15 @@ void    Scalar::execute(const std::string &literal)
         this->printDouble(value);
         return;
     }
-    if (this->isChar(literal))
-    {
-        char charValue = literal[0];
-        std::cout << "char: '" << charValue << "'" << std::endl;
-        std::cout << "int: " << static_cast<int>(charValue) << std::endl;
-        std::cout << "float: " << static_cast<float>(charValue) << "f" << std::endl;
-        std::cout << "double: " << static_cast<double>(charValue) << std::endl;
-        return;
-    }
+    // if (this->isChar(literal))
+    // {
+    //     char charValue = literal[0];
+    //     std::cout << "char: '" << charValue << "'" << std::endl;
+    //     std::cout << "int: " << static_cast<int>(charValue) << std::endl;
+    //     std::cout << "float: " << static_cast<float>(charValue) << "f" << std::endl;
+    //     std::cout << "double: " << static_cast<double>(charValue) << std::endl;
+    //     return;
+    // }
 }
 
 void    Scalar::printChar(double value)
@@ -231,9 +258,9 @@ void    Scalar::printDouble(double value)
         std::cout << std::fixed << std::setprecision(1) << "double: " << value << std::endl;
 }
 
-void    ScalarConverter:: convert(const std::string &literal)
-{
-    Scalar  ScalarInstance;
+// void    ScalarConverter::convert(const std::string &literal)
+// {
+//     Scalar  ScalarInstance;
 
-    ScalarInstance.execute(literal);
-}
+//     ScalarInstance.execute(literal);
+// }

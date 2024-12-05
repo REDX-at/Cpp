@@ -13,50 +13,68 @@
 #include <iostream>
 #include <string>
 
-class Dog {
-    private:
-        std::string type;
-    public:
-        Dog() : type("dog") {}
-        std::string getType() const
-        {
-            return type;
-        }
-};
+// class Dog {
+//     private:
+//         std::string type;
+//     public:
+//         Dog() : type("dog") {}
+//         std::string getType() const
+//         {
+//             return type;
+//         }
+// };
 
-class Cat {
-    private:
-        std::string type;
-    public:
-        Cat() : type("cat") {}
-        std::string getType() const
-        {
-            return type;
-        }
-};
+// class Cat {
+//     private:
+//         std::string type;
+//     public:
+//         Cat() : type("cat") {}
+//         std::string getType() const
+//         {
+//             return type;
+//         }
+// };
 
-int main()
-{
+// int main()
+// {
 
-    // int  a = 14;
+//     // int  a = 14;
 
-    // double b = static_cast<double>(a);
-    // std::cout << b << std::endl;
+//     // double b = static_cast<double>(a);
+//     // std::cout << b << std::endl;
 
-    int a = 97;
-    // int *ptr = &a;
+//     int a = 97;
+//     // int *ptr = &a;
 
-    // int *b = &a;
+//     // int *b = &a;
 
-    // std::cout << b << std::endl;
-    char  ptr = static_cast<char>(a);
-    std::cout << ptr << std::endl;
-    std::cout << a << std::endl;
+//     // std::cout << b << std::endl;
+//     char  ptr = static_cast<char>(a);
+//     std::cout << ptr << std::endl;
+//     std::cout << a << std::endl;
 
-    // 0000 0000 0000 0000 0000 0000 0000 0100    4
-    // 0000 0000 0000 0000 0000 0000 0000 0100 0000 0000 0000 0000 0000 0000 0000 0000
+//     // 0000 0000 0000 0000 0000 0000 0000 0100    4
+//     // 0000 0000 0000 0000 0000 0000 0000 0100 0000 0000 0000 0000 0000 0000 0000 0000
 
 
+
+//     return 0;
+// }
+#include <iostream>
+#include <cmath>
+
+int main() {
+    float negativeZero = -0f;
+    float positiveZero = 0.0f;
+
+    std::cout << "negativeZero: " << negativeZero << std::endl;
+    std::cout << "positiveZero: " << positiveZero << std::endl;
+
+    if (std::signbit(negativeZero)) {
+        std::cout << "negativeZero is negative." << std::endl;
+    } else {
+        std::cout << "negativeZero is positive." << std::endl;
+    }
 
     return 0;
 }

@@ -39,6 +39,8 @@ class   Scalar
 
         int         isDigit(int c);
         size_t      strlength(const std::string &str);
+        int         countDot(const std::string &literal);
+        int        countf(const std::string &literal);
 
         std::string check_type(std::string literal);
 };
