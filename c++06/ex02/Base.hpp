@@ -15,7 +15,6 @@
 #include <iostream>
 #include <string.h>
 #include <ctime>
-#include <typeinfo>
 #include <cstdlib>
 
 class Base{

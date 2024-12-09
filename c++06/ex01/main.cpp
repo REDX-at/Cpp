@@ -20,6 +20,7 @@ int main()
 
     std::cout << "Original: " << ptr << std::endl;
     uintptr_t raw = Serializer::serialize(ptr);
+
     std::cout << "Serialized: " << raw << std::endl;
     Data* ptr2 = Serializer::deserialize(raw);
     std::cout << "Deserialized: " << ptr2 << std::endl;

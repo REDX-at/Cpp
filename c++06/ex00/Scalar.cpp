@@ -176,11 +176,11 @@ void    Scalar::execute(const std::string &literal)
             char charValue = literal[0];
             std::cout << "char: '" << charValue << "'" << std::endl;
             std::cout << "int: " << static_cast<int>(charValue) << std::endl;
-            std::cout << "float: " << static_cast<float>(charValue) << "f" << std::endl;
+            std::cout << "float: " << static_cast<float>(charValue) << ".0f" << std::endl;
             std::cout << "double: " << static_cast<double>(charValue) << std::endl;
             return;
         }
-        if ( this->isFloat(literal))
+        if (this->isFloat(literal))
         {
             literal.substr(0, this->strlength(literal) - 1);
         }
@@ -191,15 +191,6 @@ void    Scalar::execute(const std::string &literal)
         this->printDouble(value);
         return;
     }
-    // if (this->isChar(literal))
-    // {
-    //     char charValue = literal[0];
-    //     std::cout << "char: '" << charValue << "'" << std::endl;
-    //     std::cout << "int: " << static_cast<int>(charValue) << std::endl;
-    //     std::cout << "float: " << static_cast<float>(charValue) << "f" << std::endl;
-    //     std::cout << "double: " << static_cast<double>(charValue) << std::endl;
-    //     return;
-    // }
 }
 
 void    Scalar::printChar(double value)
@@ -257,10 +248,3 @@ void    Scalar::printDouble(double value)
     else
         std::cout << std::fixed << std::setprecision(1) << "double: " << value << std::endl;
 }
-
-// void    ScalarConverter::convert(const std::string &literal)
-// {
-//     Scalar  ScalarInstance;
-
-//     ScalarInstance.execute(literal);
-// }
