@@ -37,7 +37,7 @@ int main()
     try{
         Array<int> Aimen(2);
 
-        Aimen[1] = 17;
+        Aimen[9] = 17;
 
         std::cout << "size of the array = " << Aimen.size() << std::endl;
     }

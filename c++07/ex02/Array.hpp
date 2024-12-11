@@ -26,12 +26,12 @@ class Array
         Array() : array(NULL), size_e(0) {
         }
 
-        Array(unsigned int size_e) : size_e(size_e) 
+        Array(unsigned int n) : size_e(n) 
         {
-            if (size_e > 0) 
+            if (n > 0) 
             {
-                array = new T[size_e];
-                for(unsigned int i = 0; i < size_e; ++i) 
+                array = new T[n];
+                for(unsigned int i = 0; i < n; ++i) 
                 {
                     array[i] = T();
                 }
@@ -39,11 +39,6 @@ class Array
             else
                 array = NULL;
         }
-
-        // unsigned int getsize() 
-        // {
-        //     return size_e;
-        // }
 
         ~Array()
         {
@@ -108,9 +103,5 @@ class Array
                 std::cout << arr[j] << std::endl;
             }
         }
-        
-        // T* getarray() 
-        // {
-        //     return array;
-        // }
+
 };
