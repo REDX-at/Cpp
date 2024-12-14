@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:41:46 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/14 14:26:38 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/14 19:39:57 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int main(int ac, char **av) {
     // for (it = btcIns.exchangeRates.begin(); it != btcIns.exchangeRates.end(); ++it) {
     //     std::cout << it->first << " | " << it->second << std::endl;
     // }
+
     return 0;
 }

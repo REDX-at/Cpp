@@ -6,13 +6,13 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:39:04 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/14 14:34:00 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/14 19:39:50 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange() : name("btc") {
+BitcoinExchange::BitcoinExchange() : date_value(""){
 }
 
 BitcoinExchange::~BitcoinExchange() {
@@ -22,7 +22,7 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange & other) {
 }
 
 BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange & other) {
-    this->name = other.name;   
+    (void)other;
     return *this;
 }
 
@@ -71,11 +71,111 @@ void    BitcoinExchange::fill_map() {
 
 void    BitcoinExchange::parse_line(std::string  line) {
 
+    int count = 0;
+    
     for (size_t i = 0; i < line.length(); i++) {
         if (!std::isdigit(line[i]) && line[i] != '|' && line[i] != '-' && line[i] != ' ' && line[i] != '.') {
-            std::cerr << "Digit Only" << std::endl;
+            std::cerr << "Error : Digit Only" << std::endl;
             return ;
-         }
+        }
+        if (line[i] == '|') {
+            count++;
+        }
+        if (count > 1) {
+            std::cerr << "Error : More Than '|'" << std::endl;
+            return ;
+        }
     }
-    std::cout << "line : " <<  line << std::endl;
+    size_t delimiter_pos = line.find('|');
+
+    if (delimiter_pos == std::string::npos) {
+        std::cerr << "Error : bad input => " << line << std::endl;
+        return ;
+    }
+
+    std::string date = line.substr(0, delimiter_pos);
+    parse_date(date);
+
+    //value
+    std::string value = line.substr(delimiter_pos + 1);
+    parse_value(value);
+}
+
+void    BitcoinExchange::parse_date(std::string date) {
+
+    int count = 0;
+    if (date[10] != ' ') {
+        std::cout << "Error : bad Input => " << date << std::endl;
+        return ;
+    }
+    for (size_t i = 0; i < date.length(); i++) {
+        if (date[i] == '-') {
+            count++;
+            if (count > 2) {
+                std::cout << "Error : bad Input => " << date << std::endl;
+                return ;
+            }
+        }
+        if (date[i] == ' ' && i != 10) {
+            std::cout << "Error : bad Input => " << date << std::endl;
+            return ;
+        }
+    }
+    size_t date_delimiter = date.find('-');
+
+    std::string year_str = date.substr(0, date_delimiter);
+    
+    std::string rest = date.substr(date_delimiter + 1);
+
+    date_delimiter = rest.find('-');
+
+    std::string month_str = rest.substr(0, date_delimiter);
+    std::string day_str = rest.substr(date_delimiter + 1);
+
+    int year = 0;
+    int month = 0;
+    int day = 0;
+
+    std::stringstream ss_year(year_str);
+    ss_year >> year;
+    std::stringstream ss_month(month_str);
+    ss_month >> month;
+    std::stringstream ss_day(day_str);
+    ss_day >> day;
+    
+    if (year < 2009 || year > 2022 || month < 1 || month > 12 || day < 1 || day > 31) {
+        std::cout << "Error : bad Input => " << date << std::endl;
+        return ;
+    }
+    std::cout << date << "| ";
+}
+
+void    BitcoinExchange::parse_value(std::string value) {
+    double _value = 0;
+    if (value.find('-') != std::string::npos) {
+        std::cerr << "Error : not a positive number."<< std::endl;
+        return;
+    }
+    for (size_t i = 0; i < value.length(); i++) {
+        if (value[i] == '.'){
+            _value++;
+            if (_value > 2) {
+                std::cerr << "Error : bad Value of btc => " << value << std::endl;
+                return ;
+            }
+        }
+    }
+    if (value.length() > 5 ) {
+        std::cerr << "Error : Invalid Input" << std::endl;
+        return ;
+    }
+
+    std::stringstream ss(value);
+    ss >> _value;
+
+    if (_value < 0 || _value > 1000 ) {
+        _value < 0 ? std::cerr << "Error :  not a positive number." << std::endl : std::cerr << "Error : too large a number" << std::endl;
+        return ;
+    }
+    std::cout << _value << std::endl;
 }

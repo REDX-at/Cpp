@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:31:45 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/14 14:27:09 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/14 19:39:53 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 class BitcoinExchange
 {
     private:
-        std::string name;
+        std::string date_value;
     public:
         std::map<std::string, double> exchangeRates;
 
@@ -34,4 +34,6 @@ class BitcoinExchange
         bool    handle_input_file(std::string & filename);
         void    fill_map();
         void    parse_line(std::string line);
+        void    parse_date(std::string date);
+        void    parse_value(std::string date);
 };
