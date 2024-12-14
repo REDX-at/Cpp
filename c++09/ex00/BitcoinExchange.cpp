@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:39:04 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/14 19:39:50 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/14 20:56:50 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ void    BitcoinExchange::parse_line(std::string  line) {
     //value
     std::string value = line.substr(delimiter_pos + 1);
     parse_value(value);
+    std::cout << date << "|" << value << std::endl;
 }
 
 void    BitcoinExchange::parse_date(std::string date) {
@@ -147,7 +148,7 @@ void    BitcoinExchange::parse_date(std::string date) {
         std::cout << "Error : bad Input => " << date << std::endl;
         return ;
     }
-    std::cout << date << "| ";
+    // std::cout << date << "| ";
 }
 
 void    BitcoinExchange::parse_value(std::string value) {
@@ -177,5 +178,5 @@ void    BitcoinExchange::parse_value(std::string value) {
         _value < 0 ? std::cerr << "Error :  not a positive number." << std::endl : std::cerr << "Error : too large a number" << std::endl;
         return ;
     }
-    std::cout << _value << std::endl;
+    // std::cout << _value << std::endl;
 }
