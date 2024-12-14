@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:41:46 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/14 13:22:22 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/14 14:26:38 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,15 @@ int main(int ac, char **av) {
 
     std::string str(av[1]);
     
-    if (!btcIns.open_files(str))
+    if (!btcIns.handle_input_file(str))
     {
         return 1;
     }
+    // Data.csv
+    // btcIns.fill_map();
+    // std::map<std::string, double>::iterator it;
+    // for (it = btcIns.exchangeRates.begin(); it != btcIns.exchangeRates.end(); ++it) {
+    //     std::cout << it->first << " | " << it->second << std::endl;
+    // }
     return 0;
 }

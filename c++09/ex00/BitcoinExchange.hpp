@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:31:45 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/14 13:22:37 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/14 14:27:09 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ class BitcoinExchange
         ~BitcoinExchange();
         BitcoinExchange & operator=(const BitcoinExchange & other);
 
-        bool    open_files(std::string & filename);        
+        bool    handle_input_file(std::string & filename);
+        void    fill_map();
+        void    parse_line(std::string line);
 };

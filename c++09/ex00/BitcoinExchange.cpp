@@ -6,32 +6,27 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:39:04 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/14 13:23:21 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/14 14:34:00 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange() : name("btc") {
-    // std::cout << "Default Constructor Called" << std::endl;
 }
 
 BitcoinExchange::~BitcoinExchange() {
-    // std::cout << "Desstructor Called" << std::endl;
 }
 BitcoinExchange::BitcoinExchange(const BitcoinExchange & other) {
-    // std::cout << "Copy Constructor Called" << std::endl;
     *this = other;
 }
 
 BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange & other) {
-    // std::cout << "Assign Opertor Called" << std::endl;
     this->name = other.name;   
     return *this;
 }
 
-bool    BitcoinExchange::open_files(std::string & filename) {
-    // input.txt
+bool    BitcoinExchange::handle_input_file(std::string & filename) {
     std::ifstream file_input(filename);
 
     if (!file_input.is_open()) {
@@ -41,19 +36,21 @@ bool    BitcoinExchange::open_files(std::string & filename) {
     else {
         // Parse The input file
         std::string line_input;
-
+        
         while (std::getline(file_input, line_input)) {
-            std::cout << line_input << std::endl;
+            // std::cout << line_input << std::endl;
+            this->parse_line(line_input);
         }
     }
-    std::cerr << "Input Not Parsed Yet" << std::endl;
-    return false;
-    // data.csv    
+    return true;
+}
+
+void    BitcoinExchange::fill_map() {
     std::ifstream file("data.csv");
 
     if (!file.is_open()) {
         std::cerr << "Error: could not open file." << std::endl;
-        return false;
+        return ;
     }
 
     std::string line;
@@ -70,9 +67,15 @@ bool    BitcoinExchange::open_files(std::string & filename) {
     }
 
     file.close();
-    std::map<std::string, double>::iterator it;
-    for (it = exchangeRates.begin(); it != exchangeRates.end(); ++it) {
-        std::cout << "Date: " << it->first << ", Exchange Rate: " << it->second << std::endl;
+}
+
+void    BitcoinExchange::parse_line(std::string  line) {
+
+    for (size_t i = 0; i < line.length(); i++) {
+        if (!std::isdigit(line[i]) && line[i] != '|' && line[i] != '-' && line[i] != ' ' && line[i] != '.') {
+            std::cerr << "Digit Only" << std::endl;
+            return ;
+         }
     }
-    return true;
+    std::cout << "line : " <<  line << std::endl;
 }
