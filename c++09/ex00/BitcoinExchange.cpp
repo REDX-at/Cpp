@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:39:04 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/15 17:27:51 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/15 18:30:50 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,16 +100,13 @@ void    BitcoinExchange::parse_line(std::string  line) {
     std::string value = line.substr(delimiter_pos + 1);
     parse_value(value);
     if (!valid) {
-        std::map<std::string, double>::iterator it;
-        for (it = this->exchangeRates.begin(); it != this->exchangeRates.end(); ++it) {
-            // std::cout << "|" << it->first << "|" << std::endl;
-            // std::cout<< "Date : " << "|" << date << "|" << std::endl;
-            if (date == it->first) {
-                std::cout << date << std::endl;
-                exit(0);
-            }
+        std::string sub_date = date.substr(0, date.length() - 1);
+        std::map<std::string, double>::iterator it2 = this->exchangeRates.lower_bound(sub_date);
+        if (it2 != this->exchangeRates.begin()) {
+            it2--;
+            std::cout << date << "=>" << value << " = " << std::atof(value.c_str()) * it2->second << std::endl;
+            return ;
         }
-        // std::cout << date << "|" << value << std::endl;
     }
 
     valid = false;
