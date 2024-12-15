@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:31:45 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/14 19:39:53 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/15 17:17:59 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 class BitcoinExchange
 {
     private:
-        std::string date_value;
+        bool    valid;
     public:
         std::map<std::string, double> exchangeRates;
 
@@ -36,4 +36,5 @@ class BitcoinExchange
         void    parse_line(std::string line);
         void    parse_date(std::string date);
         void    parse_value(std::string date);
+        bool    is_a_leapYear(int year);
 };

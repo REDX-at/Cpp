@@ -6,13 +6,13 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:39:04 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/14 20:56:50 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/15 17:27:51 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange() : date_value(""){
+BitcoinExchange::BitcoinExchange() : valid(false){
 }
 
 BitcoinExchange::~BitcoinExchange() {
@@ -99,7 +99,20 @@ void    BitcoinExchange::parse_line(std::string  line) {
     //value
     std::string value = line.substr(delimiter_pos + 1);
     parse_value(value);
-    std::cout << date << "|" << value << std::endl;
+    if (!valid) {
+        std::map<std::string, double>::iterator it;
+        for (it = this->exchangeRates.begin(); it != this->exchangeRates.end(); ++it) {
+            // std::cout << "|" << it->first << "|" << std::endl;
+            // std::cout<< "Date : " << "|" << date << "|" << std::endl;
+            if (date == it->first) {
+                std::cout << date << std::endl;
+                exit(0);
+            }
+        }
+        // std::cout << date << "|" << value << std::endl;
+    }
+
+    valid = false;
 }
 
 void    BitcoinExchange::parse_date(std::string date) {
@@ -107,6 +120,7 @@ void    BitcoinExchange::parse_date(std::string date) {
     int count = 0;
     if (date[10] != ' ') {
         std::cout << "Error : bad Input => " << date << std::endl;
+        this->valid = true;
         return ;
     }
     for (size_t i = 0; i < date.length(); i++) {
@@ -114,11 +128,13 @@ void    BitcoinExchange::parse_date(std::string date) {
             count++;
             if (count > 2) {
                 std::cout << "Error : bad Input => " << date << std::endl;
+                this->valid = true;
                 return ;
             }
         }
         if (date[i] == ' ' && i != 10) {
             std::cout << "Error : bad Input => " << date << std::endl;
+            this->valid = true;
             return ;
         }
     }
@@ -146,7 +162,16 @@ void    BitcoinExchange::parse_date(std::string date) {
     
     if (year < 2009 || year > 2022 || month < 1 || month > 12 || day < 1 || day > 31) {
         std::cout << "Error : bad Input => " << date << std::endl;
+        this->valid = true;
         return ;
+    }
+    
+    if (month == 2) {
+        if((is_a_leapYear(year) && day > 29) || (!is_a_leapYear(year) && day > 28)) {
+            std::cerr << "Error : Invalid Input" << std::endl;
+            this->valid = true;
+            return ;
+        }
     }
     // std::cout << date << "| ";
 }
@@ -155,6 +180,7 @@ void    BitcoinExchange::parse_value(std::string value) {
     double _value = 0;
     if (value.find('-') != std::string::npos) {
         std::cerr << "Error : not a positive number."<< std::endl;
+        this->valid = true;
         return;
     }
     for (size_t i = 0; i < value.length(); i++) {
@@ -162,12 +188,14 @@ void    BitcoinExchange::parse_value(std::string value) {
             _value++;
             if (_value > 2) {
                 std::cerr << "Error : bad Value of btc => " << value << std::endl;
+                this->valid = true;
                 return ;
             }
         }
     }
     if (value.length() > 5 ) {
         std::cerr << "Error : Invalid Input" << std::endl;
+        this->valid = true;
         return ;
     }
 
@@ -176,7 +204,13 @@ void    BitcoinExchange::parse_value(std::string value) {
 
     if (_value < 0 || _value > 1000 ) {
         _value < 0 ? std::cerr << "Error :  not a positive number." << std::endl : std::cerr << "Error : too large a number" << std::endl;
+        this->valid = true;
         return ;
     }
     // std::cout << _value << std::endl;
+}
+
+bool BitcoinExchange::is_a_leapYear(int year)
+{
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
