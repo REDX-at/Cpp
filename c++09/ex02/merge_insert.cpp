@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:59:44 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/16 22:44:55 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/16 22:48:43 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ int main() {
     mergeSort.push_back(46);
     mergeSort.push_back(2);
     mergeSort.push_back(53);
-    // mergeSort.push_back(0);
+    mergeSort.push_back(0);
 
-    // int Struggler = 0;
-    // if ((mergeSort.size() % 2) == 1) {
-    //     std::cout << "Struggler : ";
-    //     Struggler = mergeSort[mergeSort.size() - 1];
-    //     std::cout << Struggler << std::endl;
-    //     std::cout << "--------" << std::endl;
-    //     mergeSort.pop_back();
-    // }
+    int Struggler = 0;
+    if ((mergeSort.size() % 2) == 1) {
+        std::cout << "Struggler : ";
+        Struggler = mergeSort[mergeSort.size() - 1];
+        std::cout << Struggler << std::endl;
+        std::cout << "--------" << std::endl;
+        mergeSort.pop_back();
+    }
     
     std::pair<int, int> pairs;
     std::vector<std::pair<int, int> >  Vpairs;
@@ -73,4 +73,5 @@ int main() {
     for (int i = 0; i < Vpairs.size(); i++) {
         std::cout << Vpairs[i].first << " | " << Vpairs[i].second << std::endl;
     }
+    // Step 4 in the tldraw
 }
