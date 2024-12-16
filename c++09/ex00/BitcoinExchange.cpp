@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:39:04 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/15 18:30:50 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/16 17:40:02 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,29 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange & other) {
 }
 
 BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange & other) {
-    (void)other;
+    this->valid = other.valid;
     return *this;
+}
+
+void    BitcoinExchange::fill_map() {
+    std::ifstream file("data.csv");
+
+ 
+
+    std::string line;
+    std::getline(file, line);
+
+    while (std::getline(file, line)) {
+        std::string date;
+        std::stringstream ss(line);
+        double exchange_rate;
+
+        std::getline(ss, date, ',');
+        ss >> exchange_rate;
+        this->exchangeRates[date] = exchange_rate;
+    }
+
+    file.close();
 }
 
 bool    BitcoinExchange::handle_input_file(std::string & filename) {
@@ -43,30 +64,6 @@ bool    BitcoinExchange::handle_input_file(std::string & filename) {
         }
     }
     return true;
-}
-
-void    BitcoinExchange::fill_map() {
-    std::ifstream file("data.csv");
-
-    if (!file.is_open()) {
-        std::cerr << "Error: could not open file." << std::endl;
-        return ;
-    }
-
-    std::string line;
-    std::getline(file, line);
-
-    while (std::getline(file, line)) {
-        std::string date;
-        std::stringstream ss(line);
-        double exchange_rate;
-
-        std::getline(ss, date, ',');
-        ss >> exchange_rate;
-        this->exchangeRates[date] = exchange_rate;
-    }
-
-    file.close();
 }
 
 void    BitcoinExchange::parse_line(std::string  line) {
@@ -102,7 +99,10 @@ void    BitcoinExchange::parse_line(std::string  line) {
     if (!valid) {
         std::string sub_date = date.substr(0, date.length() - 1);
         std::map<std::string, double>::iterator it2 = this->exchangeRates.lower_bound(sub_date);
-        if (it2 != this->exchangeRates.begin()) {
+        if (sub_date == it2->first) {
+            std::cout << date << "=>" << value << " = " << std::atof(value.c_str()) * it2->second << std::endl;
+        }
+        else if (it2 != this->exchangeRates.begin()) {
             it2--;
             std::cout << date << "=>" << value << " = " << std::atof(value.c_str()) * it2->second << std::endl;
             return ;
