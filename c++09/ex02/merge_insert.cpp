@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:59:44 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/17 12:43:26 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/17 16:04:44 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,34 @@ void    SortPairsRecursively(std::vector<std::pair<int, int> >& Vpairs, size_t i
     SortPairsRecursively(Vpairs, i + 1);
 }
 
-int main() {
+void    BinarySearchInsert(std::vector<int> &MainChain, std::vector<int> &PendChain) {
+    std::vector<int>::iterator it;
+
+    for (it = PendChain.begin(); it != PendChain.end(); ++it){
+        std::vector<int>::iterator pos = std::lower_bound(MainChain.begin(), MainChain.end(), *it);
+        MainChain.insert(pos, *it);
+    }
+    
+    int struggler = 0;
+    std::vector<int>::iterator pos = std::lower_bound(MainChain.begin(), MainChain.end(), struggler);
+    MainChain.insert(pos, struggler);
+    
+    std::cout << "--------- Updated Main Chain ---------" << std::endl;
+    for (size_t i = 0; i < MainChain.size(); i++) {
+        std::cout << MainChain[i] << std::endl;
+    }
+}
+
+int main(int ac, char **av) {
     std::vector<int> mergeSort;
 
-    mergeSort.push_back(7);
-    mergeSort.push_back(8);
-    mergeSort.push_back(27);
-    mergeSort.push_back(100);
-    mergeSort.push_back(11);
-    mergeSort.push_back(46);
-    mergeSort.push_back(2);
-    mergeSort.push_back(53);
-    mergeSort.push_back(0);
-
+    if (ac == 1) {
+        std::cout << "Errorr" << std::endl;
+        return 1;
+    }
+    for (int i = 1; i < ac; i++) {
+        mergeSort.push_back(std::stoi(av[i]));
+    }
     int Struggler = 0;
     if ((mergeSort.size() % 2) == 1) {
         std::cout << "Struggler : ";
@@ -97,4 +112,6 @@ int main() {
     for (size_t i = 0; i < PendChain.size(); i++) {
         std::cout << PendChain[i] << std::endl;
     }
+    std::cout << "------- Use Binary Search ------" << std::endl;
+    BinarySearchInsert(MainChain, PendChain);
 }
