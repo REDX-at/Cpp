@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:17:04 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/17 22:22:00 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/18 18:13:07 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,7 @@
 
 #include <iostream>
 #include <vector>
-#include <deque>
-#include <string>
 #include <algorithm>
-#include <cctype>
-#include <utility>
 #include <cstdlib>
 
 // template <typename Container>
