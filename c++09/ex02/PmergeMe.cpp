@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:58:13 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/19 17:46:23 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/19 20:50:30 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,21 @@ bool check_sort_vector(std::vector<std::pair<int, int> >& Vpairs) {
     return true;
 }
 
-void    SortPairsRecursivelyVector(std::vector<std::pair<int, int> >& Vpairs, size_t i) {
+void SortPairsRecursivelyVector(std::vector<std::pair<int, int> >& Vpairs, size_t i) {
     if (i >= Vpairs.size() - 1) {
-        return ;
+        return;
     }
     if (Vpairs[i].first > Vpairs[i + 1].first) {
         std::swap(Vpairs[i], Vpairs[i + 1]);
     }
+    
     SortPairsRecursivelyVector(Vpairs, i + 1);
-    if (!check_sort_vector(Vpairs)) {
+    
+    if (i == 0 && !check_sort_vector(Vpairs)) {
         SortPairsRecursivelyVector(Vpairs, 0);
     }
 }
+
 
 void    mergeSortVector(int ac, char **av) 
 {
@@ -101,7 +104,7 @@ void    SortPairsRecursivelyDeque(std::deque<std::pair<int, int> >& Vpairs, size
         std::swap(Vpairs[i], Vpairs[i + 1]);
     }
     SortPairsRecursivelyDeque(Vpairs, i + 1);
-    if (!check_sort_deque(Vpairs)) {
+    if (i == 0 && !check_sort_deque(Vpairs)) {
         SortPairsRecursivelyDeque(Vpairs, 0);
     }
 }
