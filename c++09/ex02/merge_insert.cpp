@@ -6,24 +6,11 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 17:59:44 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/18 22:29:31 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/19 17:14:03 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-
-std::vector<int> GenerateJacobsthal(size_t size) {
-    std::vector<int> jacobsthal;
-    jacobsthal.push_back(0); // J0
-    if (size == 1) return jacobsthal;
-
-    jacobsthal.push_back(1); // J1
-    for (size_t i = 2; i < size; i++) {
-        int next = jacobsthal[i - 1] + 2 * jacobsthal[i - 2];
-        jacobsthal.push_back(next);
-    }
-    return jacobsthal;
-}
 
 void    SortPairsRecursively(std::vector<std::pair<int, int> >& Vpairs, size_t i) {
     if (i >= Vpairs.size() - 1) {
@@ -125,8 +112,6 @@ int main(int ac, char **av) {
     for (size_t i = 0; i < PendChain.size(); i++) {
         std::cout << PendChain[i] << std::endl;
     }
-    // use the order of instertion use jacobshtal sequence
-    // here
     // std::cout << "------- Use Binary Search ------" << std::endl;
     // BinarySearchInsert(MainChain, PendChain, Struggler);
 }
