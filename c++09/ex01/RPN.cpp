@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 12:14:15 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/16 15:28:42 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/20 12:52:19 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void    RPN::polish_function(char *argv1) {
         }
         else
         {
-            this->print_err("");
+            this->print_err("hi");
             return ;
         }
     }

@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 11:39:04 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/16 17:40:02 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/20 11:54:19 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ BitcoinExchange & BitcoinExchange::operator=(const BitcoinExchange & other) {
     return *this;
 }
 
-void    BitcoinExchange::fill_map() {
+bool    BitcoinExchange::fill_map() {
     std::ifstream file("data.csv");
 
- 
-
+    if (!file.is_open()) {
+        std::cout << "Cannot Open file 'data.csv'" << std::endl;
+        return false;   
+    }
     std::string line;
     std::getline(file, line);
 
@@ -43,8 +45,8 @@ void    BitcoinExchange::fill_map() {
         ss >> exchange_rate;
         this->exchangeRates[date] = exchange_rate;
     }
-
     file.close();
+    return true;
 }
 
 bool    BitcoinExchange::handle_input_file(std::string & filename) {
@@ -55,11 +57,9 @@ bool    BitcoinExchange::handle_input_file(std::string & filename) {
         return false;
     }
     else {
-        // Parse The input file
         std::string line_input;
-        
+
         while (std::getline(file_input, line_input)) {
-            // std::cout << line_input << std::endl;
             this->parse_line(line_input);
         }
     }
