@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:58:13 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/19 21:03:44 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/19 21:04:52 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,5 +158,3 @@ void    mergeSortDeque(int ac, char **av)
     }
     BinarySearchInsert(MainChain, PendChain, Struggler);
 }
-
-// hello check Mic

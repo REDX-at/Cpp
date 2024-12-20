@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 15:17:04 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/19 17:45:58 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/20 10:49:26 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <deque>
+#include <sstream>
 
 template <typename Container>
 void    BinarySearchInsert(Container &MainChain, Container &PendChain, int Struggler) {
