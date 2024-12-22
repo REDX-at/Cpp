@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:58:13 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/19 21:04:52 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/21 11:08:59 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ void SortPairsRecursivelyVector(std::vector<std::pair<int, int> >& Vpairs, size_
     }
 }
 
+void insertIntoMainChain(std::vector<int> &MainChain, int value) {
+    std::vector<int>::iterator it = std::lower_bound(MainChain.begin(), MainChain.end(), value);
+    MainChain.insert(it, value);
+}
 
 void    mergeSortVector(int ac, char **av) 
 {
@@ -48,6 +52,7 @@ void    mergeSortVector(int ac, char **av)
     for (size_t i = 0; i < mergeSort.size(); i++) {
         std::cout << mergeSort[i] << " ";
     }
+    std::cout << std::endl;
     int Struggler = -42;
     if ((mergeSort.size() % 2) == 1) {
         Struggler = mergeSort[mergeSort.size() - 1];
@@ -83,6 +88,7 @@ void    mergeSortVector(int ac, char **av)
         MainChain.insert(it , PendChain[0]);
         PendChain.erase(PendChain.begin());
     }
+
     BinarySearchInsert(MainChain, PendChain, Struggler);
 }
 
@@ -150,6 +156,7 @@ void    mergeSortDeque(int ac, char **av)
         MainChain.push_back(Vpairs[i].first);    
         PendChain.push_back(Vpairs[i].second);    
     }
+    
     
     std::deque<int>::iterator it = MainChain.begin();
     if (MainChain[0] >= PendChain[0]) {

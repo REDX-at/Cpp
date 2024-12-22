@@ -6,7 +6,7 @@
 /*   By: aitaouss <aitaouss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 21:21:35 by aitaouss          #+#    #+#             */
-/*   Updated: 2024/12/20 11:01:07 by aitaouss         ###   ########.fr       */
+/*   Updated: 2024/12/21 11:09:03 by aitaouss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,41 @@
 // }
 
 int main() {
-    int var = 66;
-
-    std::string word = "hello";
-
-    std::stringstream ss;
-
-    ss << var << " " << word;
-    std::cout << "Result : " << ss.str() << std::endl;
-    // ss.clear();
-    ss.str("");
-    std::cout << "Result : " << ss.str() << std::endl;
+    size_t PendSize = 22;
+    std::vector<int> jacobSthal;
+    jacobSthal.push_back(0);
+    jacobSthal.push_back(1);
+    
+    for (size_t i = 0; i < PendSize; i++) {
+        jacobSthal.push_back(jacobSthal[i] + jacobSthal[i] + jacobSthal[i + 1]);
+    }
+    for (size_t i = 0; i < jacobSthal.size(); i++) {
+        std::cout << jacobSthal[i] << std::endl;
+    }
+    
 }
+
+    // jacobsthal
+    // std::vector<int> jacobSthal;
+    // jacobSthal.push_back(0); 
+    // jacobSthal.push_back(1);
+
+    // for (size_t i = 2; i < PendChain.size(); i++) {
+    //     jacobSthal.push_back(jacobSthal[i - 1] + 2 * jacobSthal[i - 2]);
+    // }
+    // // end jacob sthal 
+    // for (size_t i = 0; i < jacobSthal.size(); i++) {
+    //     size_t index = jacobSthal[i]; // Get the index from the Jacobsthal sequence
+    //     if (index < PendChain.size()) {
+    //         int value = PendChain[index];
+    //         insertIntoMainChain(MainChain, value);
+    //     }
+    // }
+    //     if (Struggler != -42) {
+    //     insertIntoMainChain(MainChain, Struggler);
+    // }
+    // std::cout << "After:    ";
+    // for (size_t i = 0; i < MainChain.size(); i++) {
+    //     std::cout << MainChain[i] << " ";
+    // }
+    // std::cout << std::endl;
